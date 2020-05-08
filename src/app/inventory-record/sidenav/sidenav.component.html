@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-md-4">
+    <div style="margin-top: 80px;">
+        <a routerLink = "/inventory" class="logo-wrapper">
+            <img src="../../../../assets/images/inventory-icon.png" class="img-fluid" style="border-radius: 100%" alt="">
+        </a>
+      <div class="list-group list-group-flush">
+        <strong style="text-transform: uppercase;font-family: 'Franklin Gothic Medium'; margin-left: 5px; color: darkslateblue">Welcome: {{userName}}, {{userRole}}</strong>
+        <a routerLink="addproduct" routerLinkActive="active" class="list-group-item list-group-item-action">Add Products</a>
+        <a routerLink="displayproduct" routerLinkActive="active" class="list-group-item list-group-item-action">My Products</a>
+        <a *ngIf = 'approve()' routerLink="pendingproduct" routerLinkActive="active" class="list-group-item list-group-item-action">Pending Products</a>
+        <a *ngIf = 'pendingProductStatus()' routerLink="pendingproductuser" routerLinkActive="active" class="list-group-item list-group-item-action">Pending Products</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <router-outlet></router-outlet>
+  </div>
+</div>

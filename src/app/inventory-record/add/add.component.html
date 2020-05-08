@@ -1,0 +1,66 @@
+
+<div class="view full-page-intro"  style="height: 100%;background-image: url('../../assets/images/warehouse.jpg'); background-repeat: no-repeat; background-size: cover;">
+  <div style="margin-top: 200px;">
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8" style="margin-left: 20px;">
+          <mdb-card style="margin-right: 40px;opacity: 0.8;margin-bottom:200px;">
+              <div class="row" style="padding-top: 10px;align-content: center;">
+                  <div class="col-md-8">
+                      <h1 style="color:indigo;text-align: center;">Add Product</h1>
+                  </div>
+              </div>
+            <mdb-card-body style="padding-top: 0px;">
+              <form [formGroup] = "addForm" (ngSubmit) = "addProduct()">
+                  <div class="row">
+                    <label for="addForm" style="color: black;font-weight: 420;">Product Name</label>
+                    <input mdbInputDirective type="text" id="pName" formControlName="productName" class="form-control">
+                    <div class="errors" *ngIf="addForm.get('productName').touched && addForm.get('productName').hasError('required')">This field is required!</div>
+                    <div class="errors" *ngIf="addForm.get('productName').touched && addForm.get('productName').hasError('pattern')">Give a valid street name (Notallowed:special characters and multiple spaces)</div>
+                  </div>
+                  <div class="row">
+                    <label for="addForm" style="color: black;font-weight: 420;">Vendor</label>  
+                    <input mdbInputDirective type="text" id="vendorName" formControlName="vendor" class="form-control">
+                    <div class="errors" *ngIf="addForm.get('vendor').touched && addForm.get('vendor').hasError('required')">This field is required!</div>
+                    <div class="errors" *ngIf="addForm.get('vendor').touched && addForm.get('vendor').hasError('pattern')">Alphabets Allowed</div>
+                  </div>
+                  <div class="row">
+                      <label for="addForm" style="color: black;font-weight: 420;">Product Mrp</label>  
+                      <input mdbInputDirective type="text" id="productPrice" formControlName="productMrp" class="form-control">
+                      <div class="errors" *ngIf="addForm.get('productMrp').touched && addForm.get('productMrp').hasError('required')">This field is required!</div>
+                      <div class="errors" *ngIf="addForm.get('productMrp').touched && addForm.get('productMrp').hasError('pattern')">Numbers Allowed</div>
+                  </div>
+                  <div class="row">
+                      <label for="addForm" style="color: black;font-weight: 420;">Batch Number</label>  
+                      <input mdbInputDirective type="text" id="productBatch" formControlName="batchNumber" class="form-control">
+                      <div class="errors" *ngIf="addForm.get('batchNumber').touched && addForm.get('batchNumber').hasError('required')">This field is required!</div>
+                      <div class="errors" *ngIf="addForm.get('batchNumber').touched && addForm.get('batchNumber').hasError('pattern')">Numbers Allowed</div> 
+                  </div>
+                  <div class="row">
+                      <label for="addForm" style="color: black;font-weight: 420;">Batch Date</label>  
+                      <input mdbInputDirective type="date" id="productBatchDate" formControlName="batchDate" class="form-control">
+                      <div class="errors" *ngIf="addForm.get('batchDate').touched && addForm.get('batchDate').hasError('required')">This field is required!</div>
+                      <div class="errors" *ngIf="addForm.get('batchDate').touched && addForm.get('batchDate').hasError('pattern')">Date Should Follow dd-mm-yyyy</div>
+                  </div>
+                  <div class="row">
+                      <label for="addForm" style="color: black;font-weight: 420;">Quantity</label>  
+                      <input mdbInputDirective type="text" id="quantityCount" formControlName="quantity" class="form-control">
+                      <div class="errors" *ngIf="addForm.get('quantity').touched && addForm.get('quantity').hasError('required')">This field is required!</div>
+                      <div class="errors" *ngIf="addForm.get('quantity').touched && addForm.get('quantity').hasError('pattern')">Numbers Allowed</div>
+                  </div>
+                  <hr>
+                  <div class = "row">
+                    <div class = "col-md-8"></div>
+                  
+                      <div class="col-md-4">
+                          <button style="float: right" mdbBtn color="indigo" [disabled]='!addForm.valid' class="btn btn-default" block="true" type="submit">ADD PRODUCT</button>
+                      </div>
+                  </div>
+              </form>
+            </mdb-card-body>
+            
+          </mdb-card>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class = "container" style = "margin-left: 10px;margin-top: 100px;">
+    <span *ngFor = "let p of products">
+      <div class = "card" style="margin: 10px;">
+        <div class = "container">
+          <div class = "row">
+            <div class = "col" style="background-color:ghostwhite">
+              <strong style="font-size: 30px;text-transform: uppercase">{{p.productName}}</strong>
+            </div>
+          </div>
+          <div class = "row" style="text-align: center;">
+            <table class="table table-bordered" style="width: 100%">
+              <tr>
+                <th><strong>&#x20b9;Price: {{p.productMrp}}</strong></th>
+                <th style="text-transform: uppercase"><strong>Vendor: {{p.vendor}}</strong></th>
+                <th><strong>Quantity: {{p.quantity}}</strong></th>
+              </tr>
+              <tr>
+                <th><strong>Batch Date: {{p.batchDate}}</strong></th>
+                <th><strong>Batch Number: {{p.batchNumber}}</strong></th>
+                <th><strong>STATUS: {{p.status}}</strong></th>
+              </tr>
+              </table>
+              <table class="table" style="border-color: white">
+                  <tbody>
+                      <tr>
+                        <th><strong>UserName: {{p.userName}}</strong></th>
+                        <th> <button (click)="deleteProductBySM(p.productId)" mdbBtn type="button" color = "danger">&nbsp;Delete</button></th>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+    </span>
+    <h1 *ngIf = "fetchedData" style="height:14em; text-align: center;margin-top: 30%">No Products Found</h1>
+  </div>

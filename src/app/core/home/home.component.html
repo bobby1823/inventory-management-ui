@@ -1,0 +1,19 @@
+
+<div class="view full-page-intro"  style="height: 100%;background-image: url('../../assets/images/landing.jpg'); background-repeat: no-repeat; background-size: cover;">
+  <div style="margin-top: 200px;margin-bottom: 550px;text-align: center">
+  <div class="row">
+      <div class="col-md-12">
+      <div id = "welcome">
+        <h1 style="color:honeydew">WELCOME TO INVENTORY MANAGEMENT SYSTEM</h1>
+      </div>
+      <div *ngIf = 'loggedIn()'>
+          <button routerLink = '/inventory' mdbBtn type="button" color="amber" id="invDashboard" mdbWavesEffect>Inventory Dashboard</button>
+      </div>
+      <div *ngIf = 'adminlogin()'>
+          <button routerLink = '/allproducts/productlist' mdbBtn type="button" id="invProd" color="amber" mdbWavesEffect>Inventory Products</button>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+

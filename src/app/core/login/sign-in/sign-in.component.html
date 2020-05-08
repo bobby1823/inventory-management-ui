@@ -1,0 +1,133 @@
+<div class="view full-page-intro"  style="height: 100%;background-image: url('../../assets/images/warehouse.jpg'); background-repeat: no-repeat; background-size: cover;">
+  <div style="margin-top: 200px;">
+    <div class="row">
+      <!-- USER SIGNUP  -->
+      <div class="col-md-5" style="margin-left: 20px;">
+          <mdb-card style="margin-right: 40px;opacity: 0.8;margin-bottom:200px;">
+              <div class="row" style="padding-top: 10px;align-content: center;">
+                  <div class="col-md-8">
+                      <h1 style="color: darkcyan;text-align: center;">Sign-Up</h1>
+                  </div>
+              </div>
+            <mdb-card-body style="padding-top: 0px;">
+                
+              <form [formGroup] = "registerForm" (ngSubmit) = "register()">
+                  <div class="row" style="margin-left: 20px;">
+                      <div class="col-md-4 col-12" style="margin-bottom: 20px;">
+                          <label for="registerForm" style="color: black;font-weight: 420;">User Role</label>
+                      </div>
+                      
+                      <div class="col-md-4 col-12">
+                              <!-- Default checked -->
+                              <div class="custom-control custom-radio custom-control-inline">
+                                  <input type="radio" class="custom-control-input" id="defaultChecked" name="userRole" formControlName="userRole" value="Store Manager" [checked]=true mdbInputDirective>
+                                  <label class="custom-control-label" style="color: black;font-weight: 420;" for="defaultChecked">Store Manager</label>
+                              </div>
+                      </div>
+                      <div class="col-md-4 col-12">
+                          <!-- Default unchecked -->
+                          <div class="custom-control custom-radio custom-control-inline">
+                              <input type="radio" class="custom-control-input" id="defaultUnchecked" name="userRole" formControlName="userRole" value="Department Manager" mdbInputDirective>
+                              <label class="custom-control-label" style="color: black;font-weight: 420;" for="defaultUnchecked">Department Manager</label>
+                          </div>
+                      </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <label for="registerForm" style="color: black;font-weight: 420;">User Name</label>
+                    <input mdbInputDirective type="text" id="fName" formControlName="userName" class="form-control">
+                    <div class="errors" *ngIf="registerForm.get('userName').touched && registerForm.get('userName').hasError('required')">This field is required!</div>
+                  </div>
+                  <div class="row">
+                    <label for="registerForm" style="color: black;font-weight: 420;">Email id</label>  
+                    <input mdbInputDirective type="text" id="uEmail" formControlName="userEmail" class="form-control">
+                    <div class="errors" *ngIf="registerForm.get('userEmail').touched && registerForm.get('userEmail').hasError('required')">This field is required!</div>
+                    <div class="errors" *ngIf="registerForm.get('userEmail').touched && registerForm.get('userEmail').hasError('pattern')">Enter Valid Email</div>
+                  </div>
+                  <div class="row">
+                        <label for="registerForm" style="color: black;font-weight: 420;">Password</label>  
+                  </div>
+                  <div class="row">
+                      <div class = "col-md-10">
+                        <input mdbInputDirective [type]="show ? 'text' : 'password'" id="uPassword" formControlName="userPassword" class="form-control">
+                      </div>
+                      <div class="col-md-2">
+                        <i (click) = "password()" class="fa fa-2x fa-eye prefix"></i>
+                      </div>
+                      <div class="errors" *ngIf="registerForm.get('userPassword').touched && registerForm.get('userPassword').hasError('required')">This field is required!</div>
+                    
+
+                  </div>
+                  <div class="row">
+                        <label for="registerForm" style="color: black;font-weight: 420;">Confirm Password</label>  
+                  </div>
+                  <div class="row">
+                      <div class="col-md-10">
+                      <input mdbInputDirective [type]="confirmshow ? 'text' : 'password'" id="uConfirm" formControlName="userConfirmPassword" class="form-control">
+                    </div>
+                    <div class="col-md-2">
+                        <i (click) = "passwordconfirm()" class="fa fa-2x fa-eye prefix"></i>
+                    </div>
+                      <div class="errors" *ngIf="registerForm.get('userConfirmPassword').touched && registerForm.get('userConfirmPassword').hasError('required')">This field is required!</div>
+                      <div class="errors" *ngIf="registerForm.get('userConfirmPassword').touched && registerForm.get('userConfirmPassword').hasError('mustMatch')">Passwords don't match</div>
+                  </div>
+                  <hr>
+                  <div class = "row">
+                    <div class = "col-md-8"></div>
+                  
+                      <div class="col-md-4">
+                          <button style="float: right" mdbBtn color="info" [disabled]='!registerForm.valid' class="btn btn-default" block="true" type="submit">Sign up</button>
+                      </div>
+                  </div>
+              </form>
+            </mdb-card-body>
+            
+          </mdb-card>
+      </div>
+
+      <!-- USER LOGIN TO PORTAL -->
+      <div class="col-md-5" style="margin-left: 20px;">
+          <mdb-card style="margin-right: 40px;opacity: 0.8;margin-bottom:200px;">
+              <div class="row" style="padding-top: 10px;align-content: center;">
+                  <div class="col-md-8">
+                      <h1 style="color: darkcyan;text-align: center;">Login</h1>
+                  </div>
+              </div>
+            <mdb-card-body style="padding-top: 0px;">
+              <form [formGroup] = "loginForm" (ngSubmit) = "login()">
+                  <div class="row">
+                    <label for="loginForm" style="color: black;font-weight: 420;">User Name</label>
+                    <input mdbInputDirective type="text" id="fLoginName" formControlName="userName" class="form-control">
+                    <div class="errors" *ngIf="loginForm.get('userName').touched && loginForm.get('userName').hasError('required')">This field is required!</div>
+                  </div>
+                  <div class="row">
+                        <label for="loginForm" style="color: black;font-weight: 420;">Password</label>  
+                  </div>
+                  
+                  <div class="row">
+                      <span>
+                            <i (click) = "loginPasswordShow()" class="fa fa-2x fa-eye prefix"></i>
+                      </span>
+                        <div class="col-md-11">
+                            <input mdbInputDirective [type]="loginshow ? 'text' : 'password'" id="uLoginPassword" formControlName="userPassword" class="form-control">
+                        </div>
+
+                      <div class="errors" *ngIf="loginForm.get('userPassword').touched && loginForm.get('userPassword').hasError('required')">This field is required!</div>
+                  </div>
+                 
+                  <hr>
+                  <div class = "row">
+                    <div class = "col-md-8"></div>
+                  
+                      <div class="col-md-4">
+                          <button style="float: right" mdbBtn color="info" [disabled]='!loginForm.valid' class="btn btn-default" id = "loginSubmit" block="true" type="submit">Sign In</button>
+                      </div>
+                  </div>
+              </form>
+            </mdb-card-body>
+            
+          </mdb-card>
+      </div>
+    </div>
+  </div>
+</div>

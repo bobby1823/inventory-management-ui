@@ -1,0 +1,63 @@
+<div style="margin-top: 200px;">
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8" style="margin-left: 20px;">
+          <mdb-card style="margin-right: 40px;opacity: 0.8;margin-bottom:200px;">
+              <div class="row" style="padding-top: 10px;align-content: center;">
+                  <div class="col-md-8">
+                      <h1 style="color:indigo;text-align: center;">Add Product</h1>
+                  </div>
+              </div>
+            <mdb-card-body style="padding-top: 0px;">
+              <form [formGroup] = "updateForm" (ngSubmit) = "updateProduct($event)">
+                  <div class="row">
+                    <label for="updateForm" style="color: black;font-weight: 420;">Product Name</label>
+                    <input mdbInputDirective value="{{inventory.productName}}" type="text" id="pName" formControlName="productName" class="form-control">
+                    <div class="errors" *ngIf="updateForm.get('productName').touched && updateForm.get('productName').hasError('required')">This field is required!</div>
+                    <div class="errors" *ngIf="updateForm.get('productName').touched && updateForm.get('productName').hasError('pattern')">Give a valid street name (Notallowed:special characters and multiple spaces)</div>
+                  </div>
+                  <div class="row">
+                    <label for="updateForm" style="color: black;font-weight: 420;">Vendor</label>  
+                    <input mdbInputDirective value="{{inventory.vendor}}" type="text" id="vendorName" formControlName="vendor" class="form-control">
+                    <div class="errors" *ngIf="updateForm.get('vendor').touched && updateForm.get('vendor').hasError('required')">This field is required!</div>
+                    <div class="errors" *ngIf="updateForm.get('vendor').touched && updateForm.get('vendor').hasError('pattern')">Alphabets Allowed</div>
+                  </div>
+                  <div class="row">
+                      <label for="updateForm" style="color: black;font-weight: 420;">Product Mrp</label>  
+                      <input mdbInputDirective value="{{inventory.productMrp}}" type="text" id="productPrice" formControlName="productMrp" class="form-control">
+                      <div class="errors" *ngIf="updateForm.get('productMrp').touched && updateForm.get('productMrp').hasError('required')">This field is required!</div>
+                      <div class="errors" *ngIf="updateForm.get('productMrp').touched && updateForm.get('productMrp').hasError('pattern')">Numbers Allowed</div>
+                  </div>
+                  <div class="row">
+                      <label for="updateForm" style="color: black;font-weight: 420;">Batch Number</label>  
+                      <input mdbInputDirective value="{{inventory.batchNumber}}" type="text" id="productBatch" formControlName="batchNumber" class="form-control">
+                      <div class="errors" *ngIf="updateForm.get('batchNumber').touched && updateForm.get('batchNumber').hasError('required')">This field is required!</div>
+                      <div class="errors" *ngIf="updateForm.get('batchNumber').touched && updateForm.get('batchNumber').hasError('pattern')">Numbers Allowed</div> 
+                  </div>
+                  <div class="row">
+                      <label for="updateForm" style="color: black;font-weight: 420;">Batch Date</label>  
+                      <input mdbInputDirective value="{{inventory.batchDate}}" type="text" id="productBatchDate" formControlName="batchDate" class="form-control">
+                      <div class="errors" *ngIf="updateForm.get('batchDate').touched && updateForm.get('batchDate').hasError('required')">This field is required!</div>
+                      <div class="errors" *ngIf="updateForm.get('batchDate').touched && updateForm.get('batchDate').hasError('pattern')">Date Should Follow dd-mm-yyyy</div>
+                  </div>
+                  <div class="row">
+                      <label for="updateForm" style="color: black;font-weight: 420;">Quantity</label>  
+                      <input mdbInputDirective value="{{inventory.quantity}}" type="text" id="quantityCount" formControlName="quantity" class="form-control">
+                      <div class="errors" *ngIf="updateForm.get('quantity').touched && updateForm.get('quantity').hasError('required')">This field is required!</div>
+                      <div class="errors" *ngIf="updateForm.get('quantity').touched && updateForm.get('quantity').hasError('pattern')">Numbers Allowed</div>
+                  </div>
+                  <hr>
+                  <div class = "row">
+                    <div class = "col-md-8"></div>
+                  
+                      <div class="col-md-4">
+                          <button style="float: right" mdbBtn color="indigo" [disabled]='!updateForm.valid' class="btn btn-default" block="true" type="submit">UPDATE PRODUCT</button>
+                      </div>
+                  </div>
+              </form>
+            </mdb-card-body>
+            
+          </mdb-card>
+      </div>
+    </div>
+  </div>
