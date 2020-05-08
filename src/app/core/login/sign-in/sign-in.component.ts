@@ -5,7 +5,7 @@ import { FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms'
 import { UserService } from '../../../services/user.service';
 import { UserDto } from '../UserDto';
 import { Router } from '@angular/router';
-import swal from 'Sweetalert';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-sign-in',
@@ -21,8 +21,8 @@ export class SignInComponent implements OnInit {
   userdto = new UserDto();
   userRole: any;
   patternEmail = /^([A-Za-z0-9_\-\.])+\@([A-Za-z_\-\.])+\.([A-Za-z]{2,3})$/;
-  
-  constructor(private formbuilder: FormBuilder,private router: Router,private userService:UserService) { 
+
+  constructor(private formbuilder: FormBuilder,private router: Router,private userService:UserService) {
     this.show = false;
     this.loginshow = false;
     this.confirmshow = false;
@@ -58,14 +58,14 @@ export class SignInComponent implements OnInit {
 
   password(){
     console.log('hi');
-    
+
     this.show = !this.show;
     return this.show;
   }
 
   passwordconfirm(){
     console.log('hi');
-    
+
     this.confirmshow = !this.confirmshow;
     return this.confirmshow;
   }
@@ -103,21 +103,21 @@ export class SignInComponent implements OnInit {
 
     this.userService.registerUser(this.user).subscribe(data => {
       console.log(data);
-      swal({
+      swal.fire({
          title: "Successfully Registered",
          icon: "success"
        }).then(() => window.location.reload());
       //alert('Successfully Registered');
     }, error => {
       console.log(error);
-      swal({
+      swal.fire({
         title: "Oops!!",
         text: "Already Registered",
         icon: "warning"
       }).then(() => window.location.reload());
     //alert('Already Registered');
     });
-    
+
     this.user = new UserInformation();
   }
 
@@ -125,13 +125,13 @@ export class SignInComponent implements OnInit {
   login(){
     this.userdto.userName = this.loginForm.controls.userName.value;
     this.userdto.userPassword = this.loginForm.controls.userPassword.value;
-    
+
     this.userService.loginUser(this.userdto)
-    .subscribe(data => {  
+    .subscribe(data => {
       this.userRole = data;
-      
+
       console.log(this.userRole);
-      // swal({
+      // swal.fire({
       //   title: "Successfully Signed In",
       //   icon: "success"
       // })
@@ -140,7 +140,7 @@ export class SignInComponent implements OnInit {
       console.log(data);
     }, error => {
       console.log(error);
-      swal({
+      swal.fire({
         title: "Oops!!",
         text: "Invalid Credentials",
         icon: "warning"

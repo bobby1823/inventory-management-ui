@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InventoryDto } from '../inventoryDto';
 import { InventoryService } from '../../services/inventory.service';
-import swal from 'sweetAlert';
+import swal from 'sweetalert2';
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,7 +19,7 @@ export class ProductlistComponent implements OnInit {
     this.inventoryService.getProducts().subscribe(data => {
       console.log(data);
       this.products = data;
-      
+
     }, error => {
       console.log(error);
       //this.products = error;
@@ -32,21 +32,21 @@ export class ProductlistComponent implements OnInit {
   deleteProduct(productId: number){
     this.inventoryService.deleteProduct(productId).subscribe(data => {
       console.log(data);
-      swal({
+      swal.fire({
         // title: "Oops!!",
         // text: "Invalid email or password",
         // icon: "warning",
         title: "Product Deleted",
         icon: "success"
-      }).then(() => window.location.reload()); 
+      }).then(() => window.location.reload());
     }, error => {
       console.log(error);
-      swal({
+      swal.fire({
         title: "Oops!!",
         text: "Unable to delete the Product",
         icon: "warning",
-      }).then(() => window.location.reload()); 
-      
+      }).then(() => window.location.reload());
+
     })
   }
 
@@ -69,20 +69,20 @@ export class ProductlistComponent implements OnInit {
   deleteProductBySM(productId: number){
     this.inventoryService.deleteProductBySM(productId).subscribe(data => {
       console.log(data);
-      swal({
+      swal.fire({
         // title: "Oops!!",
         // text: "Invalid email or password",
         // icon: "warning",
         title: "Product Deleted",
         icon: "success"
-      }).then(() => window.location.reload()); 
+      }).then(() => window.location.reload());
     }, error => {
       console.log(error);
-      swal({
+      swal.fire({
         title: "Oops!!",
         text: "Unable to delete the Product",
         icon: "warning",
-      }).then(() => window.location.reload()); 
+      }).then(() => window.location.reload());
     })
   }
 

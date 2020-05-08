@@ -3,7 +3,7 @@ import { Inventory } from '../InventoryRecord';
 
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { InventoryService } from '../../services/inventory.service';
-import swal from 'sweetAlert';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add',
@@ -54,12 +54,12 @@ export class AddComponent implements OnInit {
     console.log(this.inventory);
     this.inventoryService.addProducts(this.inventory).subscribe(data =>{
       console.log(data);
-      swal({
+      swal.fire({
 
         title: "Product Successfully Added",
         icon: "success"
       }).then(() => window.location.reload());
-      
+
     }, error => {
       console.log(error);
     })

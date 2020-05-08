@@ -4,7 +4,7 @@ import { InventoryService } from '../../services/inventory.service';
 import { FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { InventoryDto } from '../inventoryDto';
-import swal from 'sweetAlert';
+import swal from 'sweetalert2';
 import { Router } from '@angular/router';
 
 @Component({
@@ -23,17 +23,17 @@ export class UpdateproductComponent implements OnInit {
   constructor(private formbuilder: FormBuilder, private inventoryService: InventoryService,private router:Router) { }
 
   ngOnInit() {
-    
+
     this.productId = sessionStorage.getItem('productId');
     console.log(this.productId);
     this.inventoryService.productById().subscribe(data => {
       this.inventory = data;
     }, error => {
       console.log(error);
-      
+
     })
 
-    
+
   }
 
   updateForm = this.formbuilder.group({
@@ -70,18 +70,18 @@ export class UpdateproductComponent implements OnInit {
     this.inventory.userName = sessionStorage.getItem('userName');
     console.log(this.inventory);
     this.inventoryService.updateProduct(this.inventory).subscribe(data => {
-      swal({
+      swal.fire({
         title: "Product Updated",
         icon: "success"
       }).then(() => this.router.navigate(['/inventory']));
     }, error => {
-      swal({
+      swal.fire({
         title: "Oops!!",
         text: "Unable to update the Product",
         icon: "warning",
       }).then(() => window.location.reload());
     })
-    
+
   }
 
 }
