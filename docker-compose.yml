@@ -1,0 +1,7 @@
+version: "2.1"
+services:
+  ui-service:
+    image: sayanta/inventory-ui:latest
+    container_name: ui-service
+    ports:
+      - "8076:80"
